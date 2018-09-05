@@ -4,7 +4,7 @@ module RSpec
   module BecomeMatcher
     class Matcher
       DEFAULT_LIMIT = 3
-      attr_reader :expected, :limit, :current
+      attr_reader :expected, :limit, :current, :was
 
       def initialize(expected)
         @expected = expected
@@ -13,6 +13,7 @@ module RSpec
 
       def matches?(block)
         Timeout.timeout(limit) do
+          @was = @current = block.call
           @current = block.call until current == expected
           true
         end
@@ -27,13 +28,13 @@ module RSpec
 
       def failure_message
         <<~MESSAGE
-        Expected #{current} to become #{expected} in #{limit.to_i} second, but not
+        Expected #{was} to become #{expected} in #{limit.to_i} second, but not
         MESSAGE
       end
 
       def failure_message_when_negated
         <<~MESSAGE
-        Expected #{current} not to become #{expected} in #{limit.to_i} second
+        Expected #{was} not to become #{expected} in #{limit.to_i} second
         MESSAGE
       end
 
