@@ -1,8 +1,12 @@
-# Rspec::Become::Matcher
+# Rspec::BecomeMatcher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rspec/become/matcher`. To experiment with that code, run `bin/console` for an interactive prompt.
+RSpec matcher to check that an expression changed its result in arbitrary seconds.
 
-TODO: Delete this and the text above, and describe your gem
+```ruby
+async_task.start!
+expect { async_task.finished? }.to become(true)
+```
+
 
 ## Installation
 
@@ -22,13 +26,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Start some asynchronous task
+async_task.start!
 
-## Development
+# `become` matcher checkes the task is `finished?` periodically
+expect { async_task.finished? }.to become(true) # => PASS
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+# Start long asynchronous task
+long_task.start!
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# By default, `become` matcher waits 3 seconds.
+expect { long_task.finished? }.to become(true) # => FAIL
+
+# Start long asynchronous task, which finishes in 5 seconds
+another_long_task.start!
+
+# Timeout seconds can be specified with `in`
+expect { another_long_task.finished? }.to become(true).in(10) # => PASS
+```
 
 ## Contributing
 
