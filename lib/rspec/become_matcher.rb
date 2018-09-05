@@ -14,7 +14,10 @@ module RSpec
       def matches?(block)
         Timeout.timeout(limit) do
           @was = @current = block.call
-          @current = block.call until current == expected
+          @current = begin
+                       sleep 0.1
+                       block.call
+                     end until current == expected
           true
         end
       rescue Timeout::Error
