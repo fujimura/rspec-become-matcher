@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rspec/become/matcher/version"
+require "rspec/become_matcher/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-become-matcher"
