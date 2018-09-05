@@ -5,7 +5,7 @@ require "rspec/become_matcher/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-become-matcher"
-  spec.version       = Rspec::Become::Matcher::VERSION
+  spec.version       = Rspec::BecomeMatcher::VERSION
   spec.authors       = ["Daisuke Fujimura"]
   spec.email         = ["me@fujimuradaisuke.com"]
 
