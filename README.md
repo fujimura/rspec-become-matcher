@@ -44,6 +44,10 @@ another_long_task.start!
 
 # Timeout seconds can be specified with `in`
 expect { another_long_task.finished? }.to become(true).in(10) # => PASS
+
+# Expectation can be specified with block
+yet_another_long_task.start!
+expect { yet_another_long_task }.to become { |task| task.finished? } # => PASS
 ```
 
 ## Contributing
