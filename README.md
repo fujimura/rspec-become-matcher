@@ -1,4 +1,4 @@
-# Rspec::BecomeMatcher
+# Rspec::BecomeMatcher [![Build Status](https://travis-ci.org/fujimura/rspec-become-matcher.svg?branch=master)](https://travis-ci.org/fujimura/rspec-become-matcher)
 
 RSpec matcher to check that an expression changed its result in arbitrary seconds.
 
