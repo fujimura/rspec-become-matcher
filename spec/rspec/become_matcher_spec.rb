@@ -48,6 +48,18 @@ RSpec.describe "expect { actual }.to become(expected)" do
     expect { value }.to become(2).in(4)
   end
 
+  it 'can assert with block' do
+    value = 1
+
+    Thread.new do
+      value = 2
+    end
+
+    expect(value).to eq 1
+
+    expect { value }.to become { |v| v == 2 }
+  end
+
   it "shows good negated message" do
     value = 1
 
