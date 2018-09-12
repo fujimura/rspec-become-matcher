@@ -10,7 +10,7 @@ RSpec.describe "expect { actual }.to become(expected)" do
   it 'waits until given expression becomes expected value' do
     value = 1
 
-    t = Thread.new do
+    Thread.new do
       sleep 1
       value = 2
     end
@@ -23,7 +23,7 @@ RSpec.describe "expect { actual }.to become(expected)" do
   it "fails when given expression doesn't become to expected value in default timeout time(3 second)" do
     value = 1
 
-    t = Thread.new do
+    Thread.new do
       sleep 4
       value = 2
     end
@@ -38,7 +38,7 @@ RSpec.describe "expect { actual }.to become(expected)" do
   it 'can change timeout seconds with `in`' do
     value = 1
 
-    t = Thread.new do
+    Thread.new do
       sleep 3.5
       value = 2
     end
