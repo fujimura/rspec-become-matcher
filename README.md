@@ -26,6 +26,17 @@ Or install it yourself as:
 
 ## Usage
 
+Require and include matcher first:
+```ruby
+require 'rspec/become_matcher'
+
+RSpec.configure do |config|
+  config.include RSpec::BecomeMatcher
+end
+```
+
+Then, asynchronous behaviour can be tested like this:
+
 ```ruby
 # Start some asynchronous task
 async_task.start!
