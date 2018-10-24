@@ -41,13 +41,13 @@ Then, asynchronous behaviour can be tested like this:
 # Start some asynchronous task
 async_task.start!
 
-# `become` matcher checkes the task is `finished?` periodically
+# `become` matcher checks the task is `finished?` periodically
 expect { async_task.finished? }.to become(true) # => PASS
 
 # Start long asynchronous task
 long_task.start!
 
-# By default, `become` matcher waits 3 seconds.
+# By default, `become` matcher waits 3 seconds
 expect { long_task.finished? }.to become(true) # => FAIL
 
 # Start long asynchronous task, which finishes in 5 seconds
