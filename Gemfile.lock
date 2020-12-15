@@ -8,7 +8,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
-    rake (10.5.0)
+    rake (13.0.1)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -24,11 +24,12 @@ GEM
     rspec-support (3.10.0)
 
 PLATFORMS
+  ruby
   x86_64-darwin-19
 
 DEPENDENCIES
   bundler (> 2)
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec
   rspec-become-matcher!
   rspec-expectations (>= 3)
