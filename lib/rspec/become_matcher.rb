@@ -33,9 +33,14 @@ module RSpec
         end
       end
 
-      def in(limit)
+      def within(limit)
         @limit = limit
         self
+      end
+
+      def in(limit)
+        warn "[DEPRECATION] `in` is deprecated. Please use `within` instead."
+        within(limit)
       end
 
       def failure_message

@@ -35,7 +35,20 @@ RSpec.describe "expect { actual }.to become(expected)" do
     }.to fail_with(/Expected 1 to become 2 in 3 second, but not/)
   end
 
-  it 'can change timeout seconds with `in`' do
+  it 'can change timeout seconds with `within`' do
+    value = 1
+
+    Thread.new do
+      sleep 3.5
+      value = 2
+    end
+
+    expect(value).to eq 1
+
+    expect { value }.to become(2).within(4)
+  end
+
+  it 'can change timeout seconds with `in`, which is depecated in favor of `within`' do
     value = 1
 
     Thread.new do
