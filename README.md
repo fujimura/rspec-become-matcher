@@ -1,4 +1,4 @@
-# Rspec::BecomeMatcher [![Build Status](https://travis-ci.org/fujimura/rspec-become-matcher.svg?branch=master)](https://travis-ci.org/fujimura/rspec-become-matcher)
+# Rspec::BecomeMatcher [![Build Status](https://github.com/fujimura/rspec-become-matcher/actions/workflows/ci.yml/badge.svg)](https://github.com/fujimura/rspec-become-matcher/actions/workflows/ci.yml)
 
 RSpec matcher to check that an expression changed its result within arbitrary seconds.
 
@@ -6,7 +6,6 @@ RSpec matcher to check that an expression changed its result within arbitrary se
 async_task.start!
 expect { async_task.finished? }.to become(true)
 ```
-
 
 ## Installation
 
@@ -27,6 +26,7 @@ Or install it yourself as:
 ## Usage
 
 Require and include matcher first:
+
 ```ruby
 require 'rspec/become_matcher'
 
